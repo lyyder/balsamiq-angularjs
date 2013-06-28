@@ -2,15 +2,12 @@
 
 /* Controllers */
 
-postsApp.controller('PostsCtrl', function($scope, $http, PostsService){
+app.controller('beerController', function($scope, beerService){
 
-    $scope.posts = PostsService.get().reverse();
-    console.log("posts: " + $scope.posts)
+    $scope.beers = beerService.getBeers();
 
-    $scope.addPost = function () {
-
-        $scope.posts.push($scope.post)
-        $scope.post = {};
+    $scope.addBeer = function () {
+        beerService.addBeer($scope.beer);
     }
 
 });

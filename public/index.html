@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
-    <title>posts</title>
+    <title>Beermaster 2000</title>
     <link rel="stylesheet" href="css/app.css"/>
 
 </head>
@@ -11,30 +11,12 @@
 <!--<li><a href="#/view1">view1</a></li>-->
 <!--<li><a href="#/view2">view2</a></li>-->
 <!--</ul>-->
-<div ng-app="postsApp">
+<div>
 
-    <h1>posts</h1>
+    <h1>Beermaster 2000</h1>
     <br>
 
-    <div ng-controller="PostsCtrl">
-
-        <form ng-submit="addPost()">
-
-
-            author: <input type="text" ng-model="post.author"/>
-            msg: <input type="text" ng-model="post.msg"/>
-
-            <button type="submit">Add</button>
-
-        </form>
-
-        <div ng-repeat="post in posts">
-
-            {{ post.author + " says " + post.msg }}
-            <br>
-
-        </div>
-    </div>
+    <ng-view></ng-view>
 
 </div>
 
@@ -43,8 +25,10 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 -->
 
-<script src="lib/angular/angular.js"></script>
+<script src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.1.5/angular-resource.min.js"></script>
 <script src="js/app.js"></script>
+<script src="js/resources.js"></script>
 <script src="js/services.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/filters.js"></script>

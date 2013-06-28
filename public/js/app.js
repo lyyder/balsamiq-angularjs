@@ -10,6 +10,15 @@
 //  }]);
 
 
-var postsApp = angular.module('postsApp', []);
+var app = angular.module('app', ['ngResource']);
 
-
+//This configures the routes and associates each route with a view and a controller
+app.config(function ($routeProvider) {
+    $routeProvider
+        .when('/',
+            {
+                controller: 'beerController',
+                templateUrl: '/partials/beers.html'
+            })
+        .otherwise({ redirectTo: '/' });
+});

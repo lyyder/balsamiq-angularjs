@@ -3,43 +3,37 @@
 /* Services */
 
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-    value('version', '0.1');
+app.factory('beerService', function (beerResource) {
 
 
-postsApp.service('PostsService', function ($http) {
+    var beers = [ ];
+
+    var factory = {};
+    factory.getBeers = function() {
+        beerResource.all(function(result) {
+            beers = result;
+        });
+    };
+
+    factory.update = function (beer) {
+        beerResource.update(beer, function(result){
+            console.log("updated: " + result);
+            factory.getBeers();
+        });
+    };
+
+    factory.remove = function (id) {
+        beerResource.remove({id: id}, function(result) {
+            console.log("removed: " + result);
+            factory.getBeers();
+        });
+    };
+
+//    this.getWorker = function (index) {
+//        return workers[index];
+//    };
 
 
-
-    return {
-        get : function() {console.log("get");
-            return [
-                {
-                    author: "Bob",
-                    msg: "surf safe"
-                },
-                {
-                    author: "Alice",
-                    msg: "Will do"
-                },
-                {
-                    author: "Eve",
-                    msg: "No you dont"
-                }
-            ];
-        }
-    }
-
-
-        //$http.get('/api/posts').success(function (data) {
-
-
-
-
-
-        //});
-
+    return factory;
 
 });
