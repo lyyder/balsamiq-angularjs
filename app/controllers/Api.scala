@@ -12,18 +12,23 @@ import play.api.libs.json.Json._
 object Api extends Controller {
 
 
-  val beerStorage = Map("red_neck" -> new Beer("red_neck", "Red Neck", "100", "Very Good"))
+  var beerStorage = Map("red_neck" -> new Beer("red_neck", "Red Neck", "100", "Very Good"))
 
 
   def beers = Action {
     Ok(toJson(beerStorage values))
   }
 
-  def save = Action (parse.json) { request =>
+  def save(id: String) = Action (parse.json) { request =>
     val beer = request.body
-    beerStorage + ((beer \ "id").toString() -> new Beer((beer \ "id").toString(),
-      (beer \ "name").toString(), (beer \ "hops").toString(), (beer \ "comments").toString()))
 
+    val b = new Beer(id,
+      (beer \ "name").toString(), (beer \ "hops").toString(), (beer \ "review").toString())
+
+    beerStorage = beerStorage + (id -> b)
+
+    println(beerStorage values)
+    println("beer: " + b)
     Ok("")
   }
 
@@ -34,8 +39,7 @@ object Api extends Controller {
         (json \ "id").as[String],
         (json \ "name").as[String],
         (json \ "hops").as[String],
-        (json \ "comments").as[String]
-
+        (json \ "review").as[String]
       )
 
 
@@ -44,7 +48,7 @@ object Api extends Controller {
           "id" -> b.id,
           "name" -> b.name,
           "hops" -> b.hops,
-          "comments" -> b.comments
+          "review" -> b.comments
         )
       }
     }
