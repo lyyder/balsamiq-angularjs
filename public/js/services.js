@@ -5,14 +5,14 @@
 
 app.factory('beerService', function (beerResource) {
 
+    var factory = new function() {
+        this.beers = [];
+    };
 
-    var beers = [ ];
-
-    var factory = {};
     factory.getBeers = function() {
         beerResource.all(function(result) {
             console.log("all: " + result);
-            beers = result;
+            factory.beers = result;
         });
     };
 

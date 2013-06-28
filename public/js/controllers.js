@@ -4,7 +4,8 @@
 
 app.controller('beerController', function($scope, beerService){
 
-    $scope.beers = beerService.getBeers();
+    $scope.model = beerService;
+    beerService.getBeers();
 
     $scope.addBeer = function () {
         beerService.update($scope.beer);

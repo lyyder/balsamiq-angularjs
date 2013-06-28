@@ -8,7 +8,7 @@
     <button type="submit" ng-disabled="!form.$valid">Add</button>
 </form>
 
-<div ng-repeat="beer in beers | orderBy:name">
+<div ng-repeat="beer in model.beers | orderBy:name">
 
     {{beer.name}}<br />
     {{beer.hops}}<br />
