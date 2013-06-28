@@ -1,0 +1,16 @@
+logs
+project/project
+project/target
+target
+tmp
+.history
+dist
+.settings
+.classpath
+.project
+.target
+.idea
+.idea_modules
+*.swp
+out
+
