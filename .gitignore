@@ -13,4 +13,4 @@ dist
 .idea_modules
 *.swp
 out
-
+*.iml
