@@ -19,11 +19,12 @@ object Api extends Controller {
     Ok(toJson(beerStorage values))
   }
 
-  def save = Action { request =>
-    val body = request.body
-    println("body: " + body)
+  def save = Action {
+//    request =>
+//    val body = request.body
+//    println("body: " + body)
 
-    Ok()
+    Ok("save")
   }
 
 
