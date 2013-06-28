@@ -10,21 +10,37 @@
 </form>
 <br />
 fitler: <input type="text" placeholder="Filter beers" ng-model="filter" />
-<table>
-    <tr>
-        <th></th>
-        <th><a ng-click="predicate = 'name'; reverse=!reverse">name</a></th>
-        <th><a ng-click="predicate = 'hops'; reverse=!reverse">hops</a></th>
-        <th><a ng-click="predicate = 'review'; reverse=!reverse">review</a></th>
-        <th></th>
-    </tr>
-<tr ng-repeat="beer in model.beers | orderBy:predicate:reverse | filter:filter"">
-     <td>{{beer.id}}</td>
-    <td>{{beer.name}}</td>
-    <td>{{beer.hops}}</td>
-    <td>{{beer.review}}</td>
-    <td><a ng-click="modify($index)">modify</a></td>
-    <td><a ng-click="remove('{{beer.id}}')">remove</a></td>
+<!--<table>-->
+    <!--<tr>-->
+        <!--<th></th>-->
+        <!--<th><a ng-click="predicate = 'name'; reverse=!reverse">name</a></th>-->
+        <!--<th><a ng-click="predicate = 'hops'; reverse=!reverse">hops</a></th>-->
+        <!--<th><a ng-click="predicate = 'review'; reverse=!reverse">review</a></th>-->
+        <!--<th></th>-->
+    <!--</tr>-->
+<!--<tr ng-repeat="beer in model.beers | orderBy:predicate:reverse | filter:filter">-->
+     <!--<td>{{beer.id}}</td>-->
+    <!--<td>{{beer.name}}</td>-->
+    <!--<td>{{beer.hops}}</td>-->
+    <!--<td>{{beer.review}}</td>-->
+    <!--<td><a ng-click="modify($index)">modify</a></td>-->
+    <!--<td><a ng-click="remove('{{beer.id}}')">remove</a></td>-->
 
-</tr>
-</table>
+<!--</tr>-->
+<!--</table>-->
+
+
+<p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+<p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<!-- Example row of columns -->
+<div class="row">
+    <div class="span4" ng-repeat="beer in model.beers | orderBy:predicate:reverse | filter:filter">
+        <h2>{{beer.name}}</h2>
+        <p>{{beer.hops}}</p>
+        <p>{{beer.review}}</p>
+        <p><a class="btn" ng-click="modify($index)">modify &raquo;</a></p>
+        <p><a class="btn" ng-click="remove('{{beer.id}}')">remove &raquo;</a></p>
+    </div>
+</div>
