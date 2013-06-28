@@ -12,4 +12,17 @@ app.controller('beerController', function($scope, beerService){
         $scope.model.beer = {};
     }
 
+    $scope.remove = function (id) {
+        console.log(id);
+        beerService.remove(id);
+    }
+
+    $scope.modify = function (index) {
+        $scope.model.beer = $scope.model.beers[index];
+    }
+
+    $scope.reset = function (index) {
+        $scope.model.beer = {};
+    }
+
 });

@@ -31,7 +31,9 @@ app.factory('beerService', function (beerResource) {
     };
 
     factory.remove = function (id) {
-        beerResource.remove({id: id}, function(result) {
+        var beer = {id: id};
+        console.log(beer);
+        beerResource.remove(beer, function(result) {
             console.log("removed: " + result);
             factory.getBeers();
         });

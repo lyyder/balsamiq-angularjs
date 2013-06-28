@@ -5,14 +5,26 @@
     hops: <input type="text" ng-model="model.beer.hops"/><br />
     review: <textarea ng-model="model.beer.review" required></textarea><br />
 
-    <button type="submit" ng-disabled="!form.$valid">Add</button>
+    <button type="submit" ng-disabled="!form.$valid">add</button>
+    <button ng-click="reset()">reset form</button>
 </form>
+<br />
+fitler: <input type="text" placeholder="Filter beers" ng-model="filter" />
+<table>
+    <tr>
+        <th></th>
+        <th><a ng-click="predicate = 'name'; reverse=!reverse">name</a></th>
+        <th><a ng-click="predicate = 'hops'; reverse=!reverse">hops</a></th>
+        <th><a ng-click="predicate = 'review'; reverse=!reverse">review</a></th>
+        <th></th>
+    </tr>
+<tr ng-repeat="beer in model.beers | orderBy:predicate:reverse | filter:filter"">
+     <td>{{beer.id}}</td>
+    <td>{{beer.name}}</td>
+    <td>{{beer.hops}}</td>
+    <td>{{beer.review}}</td>
+    <td><a ng-click="modify($index)">modify</a></td>
+    <td><a ng-click="remove({{beer.id}})">remove</a></td>
 
-<div ng-repeat="beer in model.beers | orderBy:name">
-
-    {{beer.name}}<br />
-    {{beer.hops}}<br />
-    {{beer.review}}<br />
-    <br>
-
-</div>
+</tr>
+</table>
