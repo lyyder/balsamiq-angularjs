@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc.{Action, Controller}
-import play.api.libs.json.{JsResult, JsValue, Writes}
+import play.api.libs.json.{Reads, JsResult, JsValue, Writes}
 import play.api.libs.json.Json._
 
 /**
@@ -11,38 +11,24 @@ import play.api.libs.json.Json._
  */
 object Api extends Controller {
 
-
   var beerStorage = Map("red_neck" -> new Beer("red_neck", "Red Neck", "100", "Very Good"))
-
 
   def beers = Action {
     Ok(toJson(beerStorage values))
   }
 
   def save(id: String) = Action (parse.json) { request =>
-    val beer = request.body
-
+    val beer : JsValue = request.body
     val b = new Beer(id,
-      (beer \ "name").toString(), (beer \ "hops").toString(), (beer \ "review").toString())
+      (beer \ "name").as[String], (beer \ "hops").as[String], (beer \ "review").as[String])
 
     beerStorage = beerStorage + (id -> b)
 
-    println(beerStorage values)
-    println("beer: " + b)
     Ok("")
   }
 
   case class Beer (id: String, name: String, hops: String, comments: String);
-
     implicit val beerJsonWrite = new Writes[Beer] {
-      def reads(json: JsValue): Beer = Beer(
-        (json \ "id").as[String],
-        (json \ "name").as[String],
-        (json \ "hops").as[String],
-        (json \ "review").as[String]
-      )
-
-
       def writes(b: Beer): JsValue = {
         obj(
           "id" -> b.id,
@@ -52,5 +38,4 @@ object Api extends Controller {
         )
       }
     }
-
 }
