@@ -5,7 +5,12 @@
 # Home page
 GET     /                           controllers.Assets.at(path="/public", file="index.html")
 
-GET     /api/posts                  controllers.Api.posts
+GET     /beers                      controllers.Api.beers()
+
+#GET     /beers/:id                  controllers.Api.beer(id: String)
+
 
 GET     /*file                      controllers.Assets.at(path="/public", file)
+
+
 
