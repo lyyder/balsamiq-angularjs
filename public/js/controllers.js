@@ -9,7 +9,7 @@ app.controller('beerController', function($scope, beerService){
 
     $scope.addBeer = function () {
         beerService.update($scope.model.beer);
-
+        $scope.model.beer = {};
     }
 
 });
