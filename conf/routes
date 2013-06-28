@@ -5,10 +5,9 @@
 # Home page
 GET     /                           controllers.Assets.at(path="/public", file="index.html")
 
-GET     /beers                      controllers.Api.beers()
+GET     /beers                      controllers.Api.beers
 
-#GET     /beers/:id                  controllers.Api.beer(id: String)
-
+PUT     /beers                      controllers.Api.save
 
 GET     /*file                      controllers.Assets.at(path="/public", file)
 
