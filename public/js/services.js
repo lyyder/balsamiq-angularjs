@@ -11,6 +11,7 @@ app.factory('beerService', function (beerResource) {
     var factory = {};
     factory.getBeers = function() {
         beerResource.all(function(result) {
+            console.log("all: " + result);
             beers = result;
         });
     };

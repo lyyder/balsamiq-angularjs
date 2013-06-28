@@ -1,4 +1,4 @@
-<form ng-submit="addBeer()">
+<form name="form" ng-submit="addBeer()">
 
 
     beer: <input type="text" ng-model="beer.name" required/><br />
@@ -6,7 +6,6 @@
     review: <textarea ng-model="beer.review" required></textarea><br />
 
     <button type="submit" ng-disabled="!form.$valid">Add</button>
-
 </form>
 
 <div ng-repeat="beer in beers | orderBy:name">
