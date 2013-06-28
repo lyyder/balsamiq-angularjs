@@ -5,18 +5,26 @@
 
 app.factory('beerService', function (beerResource) {
 
+    var factory = (function() {
+        var instance = {};
 
-    var beers = [ ];
+        instance.beers = [];
 
-    var factory = {};
+        return instance;
+    })();
+
     factory.getBeers = function() {
         beerResource.all(function(result) {
             console.log("all: " + result);
-            beers = result;
+            factory.beers = result;
         });
     };
 
     factory.update = function (beer) {
+        if(!beer.id) {
+            beer.id = factory.beers.length + 1;
+            console.log(beer.id);
+        }
         beerResource.update(beer, function(result){
             console.log("updated: " + result);
             factory.getBeers();

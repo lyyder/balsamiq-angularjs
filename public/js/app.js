@@ -20,5 +20,10 @@ app.config(function ($routeProvider) {
                 controller: 'beerController',
                 templateUrl: '/partials/beers.html'
             })
+        .when('/about',
+            {
+//                controller: 'beerController',
+                templateUrl: '/partials/about.html'
+            })
         .otherwise({ redirectTo: '/' });
 });
