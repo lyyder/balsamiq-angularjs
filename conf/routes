@@ -6,7 +6,7 @@
 GET     /                           controllers.Assets.at(path="/public", file="index.html")
 
 GET     /beers                      controllers.Api.beers
-#PUT     /beers                      controllers.Api.save
+PUT     /beers                      controllers.Api.save
 
 GET     /*file                      controllers.Assets.at(path="/public", file)
 

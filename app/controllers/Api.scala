@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc.{Action, Controller}
-import play.api.libs.json.{JsValue, Writes}
+import play.api.libs.json.{JsResult, JsValue, Writes}
 import play.api.libs.json.Json._
 
 /**
@@ -12,26 +12,20 @@ import play.api.libs.json.Json._
 object Api extends Controller {
 
 
-  var beerStorage = Map("red_neck" -> new Beer("red_neck", "Red Neck", "100", "Very Good"))
+  val beerStorage = Map("red_neck" -> new Beer("red_neck", "Red Neck", "100", "Very Good"))
 
 
   def beers = Action {
     Ok(toJson(beerStorage values))
   }
 
-  def save = Action {
-//    request =>
-//    val body = request.body
-//    println("body: " + body)
+  def save = Action (parse.json) { request =>
+    val beer = request.body
+    beerStorage + ((beer \ "id").toString() -> new Beer((beer \ "id").toString(),
+      (beer \ "name").toString(), (beer \ "hops").toString(), (beer \ "comments").toString()))
 
-    Ok("save")
+    Ok("")
   }
-
-
-//  def beer(id: String) = Action {
-//    Ok()
-//  }
-
 
   case class Beer (id: String, name: String, hops: String, comments: String);
 
