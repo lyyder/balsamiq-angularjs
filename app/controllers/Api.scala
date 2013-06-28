@@ -27,6 +27,11 @@ object Api extends Controller {
     Ok("")
   }
 
+  def delete(id: String) = Action {
+    beerStorage = beerStorage - (id)
+    Ok("")
+  }
+
   case class Beer (id: String, name: String, hops: String, comments: String);
     implicit val beerJsonWrite = new Writes[Beer] {
       def writes(b: Beer): JsValue = {

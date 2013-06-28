@@ -6,7 +6,10 @@
 GET     /                           controllers.Assets.at(path="/public", file="index.html")
 
 GET     /beers                      controllers.Api.beers
+
 PUT     /beers/:id                   controllers.Api.save(id: String)
+
+DELETE     /beers/:id                   controllers.Api.delete(id: String)
 
 GET     /*file                      controllers.Assets.at(path="/public", file)
 
