@@ -24,7 +24,7 @@ fitler: <input type="text" placeholder="Filter beers" ng-model="filter" />
     <td>{{beer.hops}}</td>
     <td>{{beer.review}}</td>
     <td><a ng-click="modify($index)">modify</a></td>
-    <td><a ng-click="remove({{beer.id}})">remove</a></td>
+    <td><a ng-click="remove('{{beer.id}}')">remove</a></td>
 
 </tr>
 </table>
