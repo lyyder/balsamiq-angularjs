@@ -22,7 +22,7 @@ app.factory('beerService', function (beerResource) {
 
     factory.update = function (beer) {
         if(!beer.id) {
-            beer.id = factory.beers.length + 1;
+            beer.id = new Date().getTime();
         }
         beerResource.update(beer, function(result){
             console.log("updated: " + result);

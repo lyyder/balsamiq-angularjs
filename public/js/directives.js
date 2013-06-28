@@ -3,11 +3,18 @@
 /* Directives */
 
 
-//angular.module('myApp.directives', []).
-//  directive('appVersion', ['version', function(version) {
-//    return function(scope, elm, attrs) {
-//      elm.text(version);
-//    };
-//  }]);
+app.directive('enter', function() {
+  return function(scope, element, attrs){
+      element.bind('mouseover', function() {
+          element.addClass(attrs.enter);
+      });
+    }
+});
 
-
+app.directive('leave', function() {
+  return function(scope, element, attrs) {
+    element.bind('mouseleave', function() {
+      element.removeClass(attrs.enter);
+    });
+  }
+});
