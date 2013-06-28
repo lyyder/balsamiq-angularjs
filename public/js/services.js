@@ -21,6 +21,10 @@ app.factory('beerService', function (beerResource) {
     };
 
     factory.update = function (beer) {
+        if(!beer.id) {
+            beer.id = factory.beers.length + 1;
+            console.log(beer.id);
+        }
         beerResource.update(beer, function(result){
             console.log("updated: " + result);
             factory.getBeers();
